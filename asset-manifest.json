@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/TSMC-CHATBOT/static/css/main.5f361e03.chunk.css",
-    "main.js": "/TSMC-CHATBOT/static/js/main.286b16f0.chunk.js",
-    "main.js.map": "/TSMC-CHATBOT/static/js/main.286b16f0.chunk.js.map",
+    "main.js": "/TSMC-CHATBOT/static/js/main.f5c002a8.chunk.js",
+    "main.js.map": "/TSMC-CHATBOT/static/js/main.f5c002a8.chunk.js.map",
     "runtime-main.js": "/TSMC-CHATBOT/static/js/runtime-main.c619b5f7.js",
     "runtime-main.js.map": "/TSMC-CHATBOT/static/js/runtime-main.c619b5f7.js.map",
-    "static/js/2.2926902b.chunk.js": "/TSMC-CHATBOT/static/js/2.2926902b.chunk.js",
-    "static/js/2.2926902b.chunk.js.map": "/TSMC-CHATBOT/static/js/2.2926902b.chunk.js.map",
+    "static/js/2.9b471604.chunk.js": "/TSMC-CHATBOT/static/js/2.9b471604.chunk.js",
+    "static/js/2.9b471604.chunk.js.map": "/TSMC-CHATBOT/static/js/2.9b471604.chunk.js.map",
     "index.html": "/TSMC-CHATBOT/index.html",
-    "precache-manifest.ecb3d131837b551405184ab341078cda.js": "/TSMC-CHATBOT/precache-manifest.ecb3d131837b551405184ab341078cda.js",
+    "precache-manifest.d6776f08bb4fbecf4dc891217e91905f.js": "/TSMC-CHATBOT/precache-manifest.d6776f08bb4fbecf4dc891217e91905f.js",
     "service-worker.js": "/TSMC-CHATBOT/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/TSMC-CHATBOT/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.2926902b.chunk.js.LICENSE.txt": "/TSMC-CHATBOT/static/js/2.2926902b.chunk.js.LICENSE.txt"
+    "static/js/2.9b471604.chunk.js.LICENSE.txt": "/TSMC-CHATBOT/static/js/2.9b471604.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c619b5f7.js",
-    "static/js/2.2926902b.chunk.js",
+    "static/js/2.9b471604.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.286b16f0.chunk.js"
+    "static/js/main.f5c002a8.chunk.js"
   ]
 }
