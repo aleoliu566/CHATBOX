@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/TSMC-CHATBOT/precache-manifest.d6776f08bb4fbecf4dc891217e91905f.js"
+  "/TSMC-CHATBOT/precache-manifest.11ed6e851f2460e99c891945af668765.js"
 );
 
 self.addEventListener('message', (event) => {
