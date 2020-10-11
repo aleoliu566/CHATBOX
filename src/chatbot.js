@@ -8,7 +8,7 @@ class Chatbot extends React.Component{
     super(props);
 
     this.state={
-      chatContent: [],
+      chatContent: {},
       value: '',
     }
     this.handleChange = this.handleChange.bind(this);
@@ -23,8 +23,7 @@ class Chatbot extends React.Component{
       this.database = this.firebaseApp.database();
 
       this.database.ref('/Test').limitToLast(20).on("value", e => {
-        this.setState({chatContent: e.val()});
-        chatbotLists = e.val();
+        this.setState({ chatContent: e.val() });
       });
     }
   }
@@ -43,21 +42,36 @@ class Chatbot extends React.Component{
 
   handleKeyDown(event) {
     if(event.key === 'Enter' && this.state.value !== "") {
-      this.firebaseApp.database().ref('/Test').push(this.state.value);
+      var dt = new Date();
+      this.firebaseApp.database().ref('/Test').push({
+        content:this.state.value,
+        time: dt.getFullYear() + '/'
+            + (parseInt(dt.getMonth())+1) + '/'
+            + dt.getDate() + '-'
+            + dt.getHours() + ':'
+            + dt.getMinutes(),
+      });
       this.setState({value: ''});
     }
   }
 
   render(){
     let chatbot = Object.keys(this.state.chatContent).map(key => 
-      <p value={key}>{this.state.chatContent[key]}</p>
+      <p value={key}>
+        {this.state.chatContent[key].content}
+        {this.state.chatContent[key].time}
+      </p>
     )
 
     return (
       <div className="App">
-        <input type="text" value={this.state.value} onChange={this.handleChange}  onKeyPress={this.handleKeyDown}/>
-        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-        {chatbot}
+        <div className="contentBlock">
+          {chatbot}
+        </div>
+        <div className="inputBlock">
+          <input type="text" value={this.state.value} onChange={this.handleChange}  onKeyPress={this.handleKeyDown}/>
+          <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+        </div>
       </div>
     );
   }
