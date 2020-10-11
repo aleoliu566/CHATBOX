@@ -1,7 +1,13 @@
-.App {
-  text-align: center;
+.inputBlock{
+  position: absolute;
+  bottom: 0;
+  height: 34px;
+  width: 100%;
+  background-color: lightblue;
+  padding: 5px;
 }
 
+<<<<<<< HEAD
 .chatContentBox{
   position: absolute;
   bottom: 50px;

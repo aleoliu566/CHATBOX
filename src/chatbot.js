@@ -8,7 +8,7 @@ class Chatbot extends React.Component{
     super(props);
 
     this.state={
-      chatContent: [],
+      chatContent: {},
       value: '',
       userName: '',
     }
@@ -26,8 +26,7 @@ class Chatbot extends React.Component{
       this.database = this.firebaseApp.database();
 
       this.database.ref('/Test').limitToLast(20).on("value", e => {
-        this.setState({chatContent: e.val()});
-        chatbotLists = e.val();
+        this.setState({ chatContent: e.val() });
       });
     }
   }
@@ -49,19 +48,30 @@ class Chatbot extends React.Component{
 
   handleKeyDown(event) {
     if(event.key === 'Enter' && this.state.value !== "") {
-      this.sendMessege();
+      this.sendMessege();      
     }
   }
 
   sendMessege() {
     let messege = this.state.userName + ": " + this.state.value;
-    this.firebaseApp.database().ref('/Test').push(messege);
+    var dt = new Date();
+    this.firebaseApp.database().ref('/Test').push({
+      content:this.state.value,
+      time: dt.getFullYear() + '/'
+          + (parseInt(dt.getMonth())+1) + '/'
+          + dt.getDate() + '-'
+          + dt.getHours() + ':'
+          + dt.getMinutes(),
+    });
     this.setState({value: ''});
   }
 
   render(){
     let chatbot = Object.keys(this.state.chatContent).map(key => 
-      <p value={key}>{this.state.chatContent[key]}</p>
+      <p value={key}>
+        {this.state.chatContent[key].content}
+        {this.state.chatContent[key].time}
+      </p>
     )
 
     return (
