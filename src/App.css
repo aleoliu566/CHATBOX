@@ -2,37 +2,37 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chatContentBox{
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.chatSubmitBox{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightblue;
+  padding: 5px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.chatSubmitBox input[type="text"]{
+  height: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.chatSubmitBox input[type="text"]:first-child{
+  width: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chatSubmitBox input[type="text"]:nth-child(2){
+  width: calc( 100% - 200px );
+}
+
+
+.chatSubmitBox input[type="submit"]{
+  width: 100px;
+  margin-left: 10px;
+  height: 30px;
 }

@@ -10,7 +10,10 @@ class Chatbot extends React.Component{
     this.state={
       chatContent: [],
       value: '',
+      userName: '',
     }
+
+    this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -33,19 +36,27 @@ class Chatbot extends React.Component{
     this.setState({value: event.target.value});
   }
 
+  handleChangeName(event) {
+    this.setState({userName: event.target.value});
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     if(this.state.value !== "" && this.state.value !== "") {
-      this.firebaseApp.database().ref('/Test').push(this.state.value);
-      this.setState({value: ''});
+      this.sendMessege();
     }
   }
 
   handleKeyDown(event) {
     if(event.key === 'Enter' && this.state.value !== "") {
-      this.firebaseApp.database().ref('/Test').push(this.state.value);
-      this.setState({value: ''});
+      this.sendMessege();
     }
+  }
+
+  sendMessege() {
+    let messege = this.state.userName + ": " + this.state.value;
+    this.firebaseApp.database().ref('/Test').push(messege);
+    this.setState({value: ''});
   }
 
   render(){
@@ -55,9 +66,14 @@ class Chatbot extends React.Component{
 
     return (
       <div className="App">
-        <input type="text" value={this.state.value} onChange={this.handleChange}  onKeyPress={this.handleKeyDown}/>
-        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-        {chatbot}
+        <div className="chatContentBox">
+          {chatbot}
+        </div>      
+        <div className="chatSubmitBox">
+          <input type="text" value={this.state.userName} onChange={this.handleChangeName} />
+          <input type="text" value={this.state.value} onChange={this.handleChange}  onKeyPress={this.handleKeyDown}/>
+          <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+        </div>
       </div>
     );
   }
