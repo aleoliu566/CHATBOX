@@ -56,21 +56,34 @@ class Chatbot extends React.Component{
     let messege = this.state.userName + ": " + this.state.value;
     var dt = new Date();
     this.firebaseApp.database().ref('/Test').push({
-      content:this.state.value,
+      content:this.state.userName + ': ' + this.state.value,
       time: dt.getFullYear() + '/'
           + (parseInt(dt.getMonth())+1) + '/'
           + dt.getDate() + '-'
           + dt.getHours() + ':'
-          + dt.getMinutes(),
+          + dt.getMinutes() + ':'
+          + dt.getSeconds(),
+      user: this.state.userName
     });
     this.setState({value: ''});
   }
 
+  isUser(contentUser) {
+    console.log(contentUser);
+    if(contentUser === this.state.userName) {
+      return 'contentRight';
+    } else {
+      return 'contentLeft';
+    }
+  }
+
   render(){
     let chatbot = Object.keys(this.state.chatContent).map(key => 
-      <p value={key}>
+      <p value={key} className={this.isUser(this.state.chatContent[key].user)}>
         {this.state.chatContent[key].content}
-        {this.state.chatContent[key].time}
+        <span className="chatTime">
+          {this.state.chatContent[key].time}
+        </span>
       </p>
     )
 
