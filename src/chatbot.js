@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import firebase from 'firebase';
 import config from './config';
-import { Helmet } from 'react-helmet'
 
 class Chatbot extends React.Component{
   constructor(props) {
@@ -13,7 +12,6 @@ class Chatbot extends React.Component{
       chatContent: {},
       value: '',
       userName: '',
-      pageTitle: 'LEEMI',
       lastTimeFocus: '',
     }
 
@@ -25,8 +23,6 @@ class Chatbot extends React.Component{
   }
 
   componentDidMount() {
-    console.log(Date.now());
-    let chatbotLists = [];
     if (!firebase.apps.length) {
       this.firebaseApp = firebase.initializeApp(config);
       this.database = this.firebaseApp.database();
@@ -37,11 +33,9 @@ class Chatbot extends React.Component{
           lastTimeFocus: e.val()[Object.keys(e.val())[this.state.chatBotNumber-1]].timestamp
         },function(){
           let lastTimeRead = localStorage.getItem("lastTimeFocus");
-          console.log("egfegwww");
 
           if(lastTimeRead < this.state.lastTimeFocus){
-            console.log("egfeg");
-            this.setState({pageTitle: '(*) notification '})
+            document.title="(*) notification";
           }  
         });
       });
@@ -71,7 +65,7 @@ class Chatbot extends React.Component{
 
   handleFocus(event) {
     localStorage.setItem('lastTimeFocus', this.state.lastTimeFocus);
-    this.setState({pageTitle: 'LEEMI'})
+    document.title="LEEMI";
   }
 
   sendMessege() {
@@ -112,9 +106,6 @@ class Chatbot extends React.Component{
 
     return (
       <div className="App">
-        <Helmet>
-          <title>{this.state.pageTitle}</title>
-        </Helmet>
         <div className="chatContentBox">
           {chatbot}
         </div>      
