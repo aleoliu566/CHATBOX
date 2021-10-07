@@ -7,11 +7,6 @@
   padding: 5px;
 }
 
-.inputBlock input[type=text]{
-  width: calc( 100% - 100px );
-  height: 28px;
-}
-
 .inputBlock input[type=submit]{
   width: 70px;
   margin-left:5px;
@@ -21,4 +16,54 @@
 .contentBlock{
   position: absolute;
   bottom: 70px;
+}
+
+.chatContentBox{
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  padding: 20px 10px 0px;
+  box-sizing: border-box;
+}
+
+.chatSubmitBox{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightblue;
+  padding: 5px 5px;
+  box-sizing: border-box;
+}
+
+.chatSubmitBox input[type="text"]{
+  height: 30px;
+}
+
+.chatSubmitBox input[type="text"]:first-child{
+  width: 50px;
+}
+
+.chatSubmitBox input[type="text"]:nth-child(2){
+  width: calc( 100% - 200px );
+}
+
+.chatSubmitBox input[type="submit"]{
+  width: 100px;
+  margin-left: 10px;
+  height: 30px;
+}
+
+.chatTime{
+  color: darkgrey;
+  font-size: 9pt;
+  margin-left: 5px;
+}
+
+.contentRight{
+  text-align: right;
+}
+
+.contentLeft{
+  text-align: left;
 }
