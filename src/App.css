@@ -22,6 +22,8 @@
   position: absolute;
   bottom: 50px;
   width: 100%;
+  height: calc( 100vh - 50px );
+  overflow: scroll;
   padding: 20px 10px 0px;
   box-sizing: border-box;
 }
